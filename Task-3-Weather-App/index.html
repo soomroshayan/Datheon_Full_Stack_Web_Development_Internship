@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Climate Telemetry | Real-Time Weather Forecast</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-default">
+  <main class="app-wrapper">
+    <!-- Top Search & Controls -->
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">REAL-TIME CLIMATE TELEMETRY</p>
+        <h1>Weather Forecast</h1>
+      </div>
+
+      <div class="controls-bar">
+        <form id="searchForm" class="search-form">
+          <input
+            type="text"
+            id="cityInput"
+            placeholder="Search global city (e.g., Karachi, London, Tokyo)..."
+            autocomplete="off"
+            required
+          />
+          <button type="submit" class="btn-search">Search</button>
+        </form>
+
+        <button id="unitToggle" class="btn-unit" title="Switch °C / °F">°C</button>
+      </div>
+    </header>
+
+    <!-- Loading Spinner -->
+    <div id="loader" class="state-box hidden" role="status">
+      <div class="spinner"></div>
+      <p>Fetching telemetry data...</p>
+    </div>
+
+    <!-- Error Message -->
+    <div id="errorBox" class="state-box error-box hidden" role="alert">
+      <p id="errorText">City not found. Please check spelling and try again.</p>
+    </div>
+
+    <!-- Weather Dashboard Content -->
+    <section id="weatherDashboard" class="dashboard hidden">
+      <!-- Current Weather Hero Card -->
+      <div class="current-card">
+        <div class="current-main">
+          <div>
+            <h2 id="cityName">--</h2>
+            <p id="dateTime" class="sub-text">--</p>
+            <div class="temp-row">
+              <span id="currentTemp" class="temp-value">--°</span>
+              <div class="condition-box">
+                <p id="weatherCondition" class="condition-title">--</p>
+                <p id="feelsLike" class="sub-text">Feels like --°</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="icon-wrap">
+            <img id="weatherIcon" src="" alt="Weather Icon" />
+          </div>
+        </div>
+
+        <!-- Telemetry Metrics -->
+        <div class="metrics-grid">
+          <div class="metric-item">
+            <span class="metric-label">Humidity</span>
+            <strong id="humidityVal">--%</strong>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">Wind Speed</span>
+            <strong id="windVal">-- m/s</strong>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">Pressure</span>
+            <strong id="pressureVal">-- hPa</strong>
+          </div>
+          <div class="metric-item">
+            <span class="metric-label">Visibility</span>
+            <strong id="visibilityVal">-- km</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5-Day Forecast -->
+      <div class="forecast-section">
+        <h3>5-Day Temperature Forecast</h3>
+        <div id="forecastGrid" class="forecast-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

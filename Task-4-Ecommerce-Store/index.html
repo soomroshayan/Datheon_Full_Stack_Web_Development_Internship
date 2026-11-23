@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Storefront | Product Catalog & Shopping Cart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="brand">
+        <span class="brand-badge">STORE</span>
+        <h1>FakeStore Catalog</h1>
+      </div>
+
+      <div class="nav-actions">
+        <input
+          type="search"
+          id="searchInput"
+          class="search-input"
+          placeholder="Search products..."
+          aria-label="Search products"
+        />
+        <button id="openCartBtn" class="cart-btn" type="button">
+          Cart <span id="cartBadge" class="cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Category Filter Bar -->
+    <section class="filter-bar" id="categoryFilters" aria-label="Product categories">
+      <button class="filter-btn active" data-category="all" type="button">All</button>
+      <button class="filter-btn" data-category="electronics" type="button">Electronics</button>
+      <button class="filter-btn" data-category="jewelery" type="button">Jewelry</button>
+      <button class="filter-btn" data-category="men's clothing" type="button">Men's Clothing</button>
+      <button class="filter-btn" data-category="women's clothing" type="button">Women's Clothing</button>
+    </section>
+
+    <!-- Status / Loading / Error -->
+    <div id="statusBox" class="status-box">Loading product catalog...</div>
+
+    <!-- Product Grid -->
+    <section id="productGrid" class="product-grid" aria-live="polite"></section>
+  </main>
+
+  <!-- Backdrop -->
+  <div id="backdrop" class="backdrop hidden"></div>
+
+  <!-- Slide-Out Shopping Cart Drawer -->
+  <aside id="cartDrawer" class="cart-drawer" aria-label="Shopping Cart">
+    <div class="drawer-header">
+      <h2>Shopping Cart</h2>
+      <button id="closeCartBtn" class="icon-btn" type="button" aria-label="Close cart">&times;</button>
+    </div>
+
+    <div id="cartItems" class="cart-items"></div>
+
+    <div class="drawer-footer">
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <strong id="subtotalVal">$0.00</strong>
+      </div>
+      <div class="summary-row">
+        <span>Tax (8%)</span>
+        <strong id="taxVal">$0.00</strong>
+      </div>
+      <div class="summary-row">
+        <span>Shipping</span>
+        <strong id="shippingVal">$0.00</strong>
+      </div>
+      <div class="summary-row total-row">
+        <span>Total</span>
+        <strong id="totalVal">$0.00</strong>
+      </div>
+
+      <button id="checkoutBtn" class="checkout-btn" type="button" disabled>
+        Proceed to Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- Simulated Checkout Modal -->
+  <div id="checkoutModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="checkoutTitle">Simulated Checkout</h3>
+        <button id="closeModalBtn" class="icon-btn" type="button" aria-label="Close checkout">&times;</button>
+      </div>
+
+      <form id="checkoutForm" class="checkout-form">
+        <label>
+          Full Name
+          <input type="text" id="customerName" required placeholder="Shayan Ali" />
+        </label>
+        <label>
+          Shipping Address
+          <input type="text" id="customerAddress" required placeholder="Karachi, Pakistan" />
+        </label>
+        <div class="modal-summary">
+          <span>Order Total:</span>
+          <strong id="modalTotalVal">$0.00</strong>
+        </div>
+        <button type="submit" class="checkout-btn">Place Order</button>
+      </form>
+
+      <div id="orderConfirmation" class="order-confirmation hidden">
+        <h4>Order Confirmed!</h4>
+        <p id="confirmationMsg"></p>
+        <button id="doneOrderBtn" class="checkout-btn" type="button">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
